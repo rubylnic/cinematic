@@ -1,0 +1,2 @@
+export const ADD_TO_FAVS = 'FILM/ADD_TO_FAVS';
+export const REMOVE_FROM_FAVS = 'FILM/REMOVE_FROM_FAVS';
