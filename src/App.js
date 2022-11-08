@@ -13,24 +13,22 @@ import HomePage from "./pages/HomePage";
 import Favourites from './pages/Favourites';
 
 
-
 function App() {
     return (
         <div className="App">
             <Router>
                 <Navigation />
-                <div className='px-5'>
+                <div className='px-5 pt-120px'>
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/navigation" element={<Navigation />} />
-                        <Route path="/films">
+                        <Route path="/cinematic" element={<HomePage />} />
+                        <Route path="cinematic/films">
                             <Route path=":type" element={<Films />}>
                                 <Route path=":page" element={<Films />}></Route>
                             </Route>
                             <Route path="id:id" element={<FilmPage />}></Route>
                         </Route>
-                        <Route path="genres" element={<Genres />}></Route>
-                        <Route path="favs" element={<Favourites />}></Route>
+                        <Route path="cinematic/genres" element={<Genres />}></Route>
+                        <Route path="cinematic/favs" element={<Favourites />}></Route>
 
                     </Routes>
                 </div>

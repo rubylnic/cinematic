@@ -1,48 +1,40 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FilmItem from './FilmItem';
 import Carousel from './Carousel';
 
 const FilmCarousel = (props) => {
     const [response, setResponse] = useState([]);
-    const [slidesToShow, setSlidesToShow] = useState(2)
+    const [slidesToShow, setSlidesToShow] = useState(4)
     const type = props.type;
 
     useEffect(() => {
-        axios.request(options).then((res) => {
-            setResponse(res.data);
+        axios.get(apiLink).then((res) => {
+            setResponse(res.data)
         }).catch((err) => {
             console.error(err)
         })
 
         if (window.screen.availWidth < 500) {
             setSlidesToShow(1)
-        } else if (window.screen.availWidth > 770) {
+        } else if (window.screen.availWidth < 770) {
             setSlidesToShow(2)
+        } else if (window.screen.availWidth < 1024) {
+            setSlidesToShow(3)
         }
     }, [])
 
     let { results = [] } = response;
 
     // в зависимости от типа - разные url
-    let options;
-    // пока только 2 варианта слайдеров - с похожими фильмами и по типу (популярные и т.д.)
-    if (props.similar) {
-        options = {
-            method: 'GET',
-            url: 'http://localhost:8000/similar',
-            params: { similar: true, id: props.id }
-        }
-
+    let apiLink;
+    if (props.id) {
+        apiLink = `${process.env.REACT_APP_MOVIEDB_URL}/movie/${props.id}/similar?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1`;
     } else {
-        options = {
-            method: 'GET',
-            url: `http://localhost:8000/type`,
-            params: { type: type }
-        }
+        apiLink = `${process.env.REACT_APP_MOVIEDB_URL}/movie/${type}?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1`;
     }
-    const typeCapitalized = type ? type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ') : '';
+    const typeCapitalized = type.charAt(0).toUpperCase() + type.slice(1).replace('_', ' ');
 
     var settings = {
         infinite: true,
@@ -57,7 +49,7 @@ const FilmCarousel = (props) => {
             <Carousel settings={settings}>
                 {results.map((item) => {
                     return (
-                        <FilmItem key={item.id} film={item} to={`/films/id${item.id}`} state={{ film: item }} />
+                        <FilmItem key={item.id} film={item} to={`/cinematic/films/id${item.id}`} state={{ film: item }} />
                     )
 
                 })}

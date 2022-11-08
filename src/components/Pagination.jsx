@@ -1,14 +1,15 @@
 
 import { useNavigate } from 'react-router-dom'
 
-
 export default function Pagination({ page, totalPages, type, genreId }) {
     const navigate = useNavigate();
+    let state;
+
     const onNextPageClick = (evt) => {
         if (page + 1 > totalPages) {
             evt.preventDefault()
         } else {
-            navigate(`/films/${type}/${page + 1}`, { state: { type: type, page: page + 1, genreId: genreId, } })
+            navigate(`/cinematic/films/${type}/${page + 1}`, { state: state })
         }
 
     }
@@ -16,7 +17,18 @@ export default function Pagination({ page, totalPages, type, genreId }) {
         if (page - 1 <= 0) {
             evt.preventDefault()
         } else {
-            navigate(`/films/${type}/${page - 1}`, { state: { type: type, page: page - 1, genreId: genreId } })
+            navigate(`/cinematic/films/${type}/${page - 1}`, { state: state })
+        }
+    }
+
+    if (genreId) {
+        state = {
+            genre: type,
+            genreId: genreId
+        }
+    } else {
+        state = {
+            type: type,
         }
     }
 

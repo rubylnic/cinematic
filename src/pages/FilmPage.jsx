@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import { useState, useEffect } from "react"
 import axios from "axios";
@@ -8,7 +8,8 @@ import FavButton from "../components/FavButton";
 
 function FilmPage(props) {
     const location = useLocation();
-    const { id } = location.state;
+    const params = useParams();
+    const { id } = params;
     const [film, setFilm] = useState('')
     const [loaded, setLoaded] = useState(false)
     const apiLink = `${process.env.REACT_APP_MOVIEDB_URL}movie/${id}?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US`;
@@ -64,11 +65,11 @@ function FilmPage(props) {
                                             </div>
                                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                 <dt className="text-sm font-medium text-gray-500">Country</dt>
-                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{production_countries ? production_countries.map((item) => <div>{item.name}</div>) : ''}</dd>
+                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{production_countries ? production_countries.map((item, index) => <div key={index}>{item.name}</div>) : ''}</dd>
                                             </div>
                                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                 <dt className="text-sm font-medium text-gray-500">Production companies</dt>
-                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{production_companies ? production_companies.map((item) => <div>{item.name}</div>) : ''}</dd>
+                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{production_companies ? production_companies.map((item, index) => <div key={index}>{item.name}</div>) : ''}</dd>
                                             </div>
                                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                 <dt className="text-sm font-medium text-gray-500">Original language</dt>
@@ -76,7 +77,7 @@ function FilmPage(props) {
                                             </div>
                                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                 <dt className="text-sm font-medium text-gray-500">Genres</dt>
-                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{genres ? genres.map((item) => <div>{item.name}</div>) : ''}</dd>
+                                                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{genres ? genres.map((item, index) => <div key={index}>{item.name}</div>) : ''}</dd>
                                             </div>
                                             {tagline ? <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                 <dt className="text-sm font-medium text-gray-500">Tagline</dt>

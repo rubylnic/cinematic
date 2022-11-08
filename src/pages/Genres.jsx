@@ -6,13 +6,11 @@ import Genre from '../components/Genre';
 
 export default function Genres() {
     const [response, setResponse] = useState([]);
-    const options = {
-        method: 'GET',
-        url: 'http://localhost:8000/genres',
-    }
+    const location = useLocation();
+    const apiLink = `${process.env.REACT_APP_MOVIEDB_URL}genre/movie/list?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US`
     useEffect(() => {
-        axios.request(options).then((res) => {
-            setResponse(res.data);
+        axios.get(apiLink).then((res) => {
+            setResponse(res.data)
         }).catch((err) => {
             console.error(err)
         })

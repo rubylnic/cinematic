@@ -14,6 +14,9 @@ module.exports = {
       width: {
         'fitcontent': 'fit-content'
       },
+      padding: {
+        '120px': '120px'
+      }
 
     },
   },

@@ -13,12 +13,12 @@ export default function Genre({ genre }) {
         }).catch((err) => {
             console.error(err)
         })
-    }, [])
+    }, [apiLink])
 
     return (
-        <Link to={`/films/${genre.name.toLowerCase()}/1`} state={{ genre: genre.name.toLowerCase(), id: genre.id }} className="block hover:opacity-75 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 p-5 min-h-65 relative">
+        <Link to={`/cinematic/films/${genre.name.toLowerCase()}/1`} state={{ genre: genre.name.toLowerCase(), genreId: genre.id, page: 1 }} className="block hover:opacity-75 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 p-5 min-h-65 relative">
             <div className='text-m font-bold mb-1 text-center text-gray lowercase'>{genre.name}</div>
-            {img ? <img src={`${process.env.REACT_APP_POSTER + img}`} /> : <Loader />}
+            {img ? <img src={`${process.env.REACT_APP_POSTER + img}`} alt={genre.name} /> : <Loader />}
         </Link>
     )
 }
