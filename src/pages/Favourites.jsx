@@ -19,7 +19,7 @@ export default function Favourites() {
                     <>
                         <div className='text-center text-xl text-semi-bold mb-3'>There's no favourite films yet</div>
                         <Link
-                            to="/"
+                            to="/cinematic"
                             className='bg-teal-800 text-white px-2 py-2 rounded-md text-m font-medium hover:bg-teal-800 block w-fitcontent mx-auto'
                             end
                         >

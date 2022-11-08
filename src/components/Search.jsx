@@ -30,7 +30,7 @@ export default function Search() {
             <div className='films grid grid-cols-4 gap-4 mb-10'>
                 {results.map((item) => {
                     return (
-                        <FilmItem key={item.id} film={item} to={`/films/id${item.id}`} state={{ film: item }} />
+                        <FilmItem key={item.id} film={item} to={`/cinematic/films/id${item.id}`} state={{ film: item }} />
                     )
 
                 })}
