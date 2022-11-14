@@ -7,5 +7,6 @@ This repository is my pet project, The project is posted on GitPages  : [click h
 +	[React](https://reactjs.org/)
  + CSS: [Tailwind](https://tailwindcss.com//) 
  + App state management:  [Redux](https://redux.js.org/) .
+ + Usage of Custom Hooks (for debouncing)
 
 
