@@ -11,12 +11,15 @@ function FilmPage(props) {
     const params = useParams();
     const { id } = params;
     const [film, setFilm] = useState('')
-    const [loaded, setLoaded] = useState(false)
+    const [loaded, setLoaded] = useState(false);
     const apiLink = `${process.env.REACT_APP_MOVIEDB_URL}movie/${id}?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US`;
     useEffect(() => {
+        setLoaded(false);
+
         axios.get(apiLink).then((res) => {
             setFilm(res.data);
-            setLoaded(true)
+            setLoaded(true);
+            window.scrollTo(0, 0);
         }).catch((err) => {
             console.error(err)
         })

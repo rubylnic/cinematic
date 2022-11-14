@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import FilmItem from './FilmItem';
+import useDebounce from '../hooks/useDebounce';
 
 export default function Search() {
     const [value, setValue] = useState('');
-    const [response, setResponse] = useState('')
+    const [response, setResponse] = useState('');
+    const debouncedValue = useDebounce(value, 500)
+
     const apiLink = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
 
     useEffect(() => {
@@ -17,7 +20,8 @@ export default function Search() {
         } else {
             setResponse('')
         }
-    }, [value])
+    }, [debouncedValue]);
+
     const { results = [] } = response;
 
     return (
