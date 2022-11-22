@@ -6,6 +6,8 @@ This repository is my pet project, The project is posted on GitPages  : [click h
 +	[The Movie DB API](https://developers.themoviedb.org/4/getting-started/authorization/)
 +	[React](https://reactjs.org/)
  + CSS: [Tailwind](https://tailwindcss.com//) 
- + App state management:  [Redux](https://redux.js.org/) .
+ + App state management:  [Redux](https://redux.js.org/) 
+ + Fetching data: [Axios](https://axios-http.com/)
+ + Usage of Custom Hooks (for debouncing)
 
 
