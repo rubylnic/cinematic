@@ -54,7 +54,7 @@ const FilmCarousel = (props) => {
 
                 })}
             </Carousel>
-            <Link to={`/films/${type}/1`} state={{ type: type }} className='mx-auto block py-2 px-10 font-semibold bg-teal-600 rounded-lg text-white' style={{ width: 'fit-content' }}>see more</Link>
+            {type !== "Similar" ? <Link to={`/cinematic/films/${type}/1`} state={{ type: type }} className='mx-auto block py-2 px-10 font-semibold bg-teal-600 rounded-lg text-white' style={{ width: 'fit-content' }}>see more</Link> : ""}
 
         </div>
     );

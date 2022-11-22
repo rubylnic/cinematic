@@ -13,7 +13,7 @@ export default function Favourites() {
 
                 {filmsInFavs.length > 0 ?
                     <div className='films grid grid-cols-4 gap-4 mb-10'>{filmsInFavs.map((item) => (
-                        <FilmItem film={item} to={`/films/id${item.id}`} state={{ film: item }} />
+                        <FilmItem film={item} to={`/cinematic/films/id${item.id}`} state={{ film: item }} />
                     ))}
                     </div> :
                     <>
